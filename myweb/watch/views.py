@@ -13,7 +13,7 @@ def index(request):
 
     return render(request, 'watch/index.html', context)
 
-def detail(request):
-    return HttpResponse('<h1 style="color:blue">This is a detail view</h1>')
+def detail(request, item_id):
+    return HttpResponse('item_id:{}'.format(item_id))
 
 
