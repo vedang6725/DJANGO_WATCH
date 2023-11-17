@@ -14,6 +14,11 @@ def index(request):
     return render(request, 'watch/index.html', context)
 
 def detail(request, item_id):
-    return HttpResponse('item_id:{}'.format(item_id))
+    item = Item.objects.get(pk=item_id)
 
+    context = {
+        'item': item
+    }
+
+    return render(request, 'watch/detail.html', context)
 
