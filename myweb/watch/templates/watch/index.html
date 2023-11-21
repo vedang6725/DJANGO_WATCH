@@ -11,7 +11,9 @@
     {% for item in itemlist %}
     <ul>
         <li>
+            <a href="/watch/detail/{{ item.id }}">
         {{ item.id }} -- {{ item.item_name}}
+    </a>
         </li>
     </ul>
     {% endfor %}
