@@ -8,7 +8,7 @@ class Item(models.Model):
     item_price = models.IntegerField()
     item_image = models.CharField(
         max_length=500,
-        default="https://th.bing.com/th?id=OIP.N0JNvG4iu61u97rvu8FZWgHaFe&w=290&h=214&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"
+        default="https://www.windhorsepublications.com/wp-content/uploads/2019/11/image-coming-soon-placeholder.png"
     )
 
     def __str__(self):
