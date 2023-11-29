@@ -1,0 +1,11 @@
+{% extends 'watch/base.html' %}
+
+{% block body %}
+
+<form>
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Sign Up</button>
+</form>
+
+{% endblock %}
