@@ -38,14 +38,20 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
+            messages.success(
+                request,
+                'Welcome {}, you have been successfully logged in'.format(request.user.username)
+            )
             return redirect('watch:index')
 
     return render(request, 'users/login.html')
 
 def logout_view(request):
+    messages.success(
+        request,
+        '{}, you have successfully logged out'.format(request.user.username)
+    )
+    logout(request)
+    return redirect('watch:index')
 
-    if request.method == 'POST':
-        logout(request)
-        return redirect('watch:index')
-
-    return render(request, 'users/logout.html')
+    
