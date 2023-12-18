@@ -14,10 +14,10 @@ def register(request):
            username = form.cleaned_data.get('username')
         messages.success(
                 request, 
-                'Welcome {}, your account has been successfully created'.format(username)
+                'Welcome {}, your account has been successfully created.Now you may log in'.format(username)
             )
         form.save()
-        return redirect('watch:index')
+        return redirect('login')
 
     else:
         form = RegisterForm()
