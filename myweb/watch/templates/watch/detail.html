@@ -37,29 +37,35 @@
     </div>
 
     <div class="col-md-3 offset-md-1">
-        <a
-            href="{% url 'watch:update_item' item.id %}"
-            style="width:80px"
-            class="btn btn-warning"
-        >
-            Edit
-        </a>
+       
+            <a
+                href="{% url 'food:update_item' item.id %}"
+                style="width:80px"
+                class="btn btn-warning"
+            >
+                Edit
+            </a>
 
-        <a
-            href="{% url 'watch:delete_item' item.id %}"
-            style="width:80px"
-            class="btn btn-danger"
-        >
-            Delete
-        </a>
+            <a
+                href="{% url 'food:delete_item' item.id %}"
+                style="width:80px"
+                class="btn btn-danger"
+            >
+                Delete
+            </a>
 
-        <a
-            href="{% url 'watch:index' %}"
-            style="width:80px"
-            class="btn btn-success"
-        >
-            Back
-        </a>
+            <a
+                href="{% url 'food:index' %}"
+                style="width:80px"
+                class="btn btn-success"
+            >
+                Back
+            </a>
+
+        
+
+       
+         
     </div>
 </div>
 

@@ -6,7 +6,16 @@ from watch.forms import ItemForm
 # Create your views here.
 
 def index(request):
+    
+   
     itemlist = Item.objects.all()
+
+   
+
+    
+
+        
+    
 
     context = {
         'itemlist': itemlist
