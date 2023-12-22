@@ -94,3 +94,17 @@ def delete_item(request, id):
         return redirect('watch:index')
 
     return render(request, 'watch/item-delete.html', context)
+
+def delete_crf(request, details_id, crf_id):
+
+    crfo = CusRatingFeedback.objects.get(pk=crf_id)
+
+    context = {
+        'crfo':crfo
+    }
+
+    if request.method == 'POST':
+        crfo.delete()
+        return redirect('food:detail', item_id=details_id)
+
+    return render(request, 'users/crf_del.html', context)
