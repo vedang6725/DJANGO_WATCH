@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from watch.models import Item
 from watch.forms import ItemForm
+from users.models import CusOrders
 
 # Create your views here.
 
@@ -25,9 +26,12 @@ def index(request):
 
 def detail(request, item_id):
     item = Item.objects.get(pk=item_id)
+    
+    Obj_CusOrd = CusOrders.objects.all()
 
     context = {
-        'item': item
+        'item': item,
+        'oco':Obj_CusOrd
     }
 
     return render(request, 'watch/detail.html', context)
