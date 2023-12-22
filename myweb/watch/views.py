@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from watch.models import Item
 from watch.forms import ItemForm
-from users.models import CusOrders
+from users.models import CusOrders, CusRatingFeedback
 
 # Create your views here.
 
@@ -28,10 +28,15 @@ def detail(request, item_id):
     item = Item.objects.get(pk=item_id)
     
     Obj_CusOrd = CusOrders.objects.all()
+    
+    crf = CusRatingFeedback.objects.filter(
+        prod_code=item.prod_code
+    )
 
     context = {
         'item': item,
-        'oco':Obj_CusOrd
+        'oco':Obj_CusOrd,
+        'crf':crf
     }
 
     return render(request, 'watch/detail.html', context)
