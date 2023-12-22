@@ -52,7 +52,7 @@ def login_view(request):
                 request,
                 'Welcome Superuser {}, you have been successfully logged in'.format(request.user.username)
             )
-            return redirect('food:index')
+            return redirect('watch:index')
 
         elif user is not None:
             login(request, user)
@@ -132,7 +132,7 @@ def CusRatFeed(request, it_id, pc):
         form.instance.prod_code = pc
         form.instance.username = request.user.username
         form.save()
-        return redirect('food:detail', item_id=it_id)
+        return redirect('watch:detail', item_id=it_id)
 
     return render(request, 'users/item-form.html', context)
 
@@ -147,7 +147,7 @@ def update_crf(request, details_id, crf_id):
 
     if form.is_valid():
         form.save()
-        return redirect('food:detail', item_id=details_id)
+        return redirect('watch:detail', item_id=details_id)
 
     return render(request, 'users/crf_upd.html', context)
 
@@ -161,6 +161,6 @@ def delete_crf(request, details_id, crf_id):
 
     if request.method == 'POST':
         crfo.delete()
-        return redirect('food:detail', item_id=details_id)
+        return redirect('watch:detail', item_id=details_id)
 
     return render(request, 'users/crf_del.html', context)

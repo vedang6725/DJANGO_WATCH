@@ -6,28 +6,25 @@ from users.models import CusOrders, CusRatingFeedback
 
 # Create your views here.
 
-def index(request):
-    
-   
-    itemlist = Item.objects.all()
 
-   
-
-    
-
-        
-    
+def index(request, category=None):
+    if category:
+        itemlist = Item.objects.filter(category=category)
+    else:
+        itemlist = Item.objects.all()
 
     context = {
-        'itemlist': itemlist
+        'itemlist': itemlist,
+        'selected_category': category,  # To highlight the selected category in the template
     }
 
     return render(request, 'watch/index.html', context)
 
+
 def detail(request, item_id):
     item = Item.objects.get(pk=item_id)
     
-    Obj_CusOrd = CusOrders.objects.all()
+    Obj_CusOrd = CusOrders.objects.filter(user=request.user)
     
     crf = CusRatingFeedback.objects.filter(
         prod_code=item.prod_code
