@@ -1,6 +1,8 @@
 from django.urls import path, include
 from watch import views
 
+
+
 app_name = 'watch'
 
 urlpatterns = [
@@ -9,6 +11,10 @@ urlpatterns = [
     path('update/<int:id>/', views.update_item, name='update_item'),
     path('delete/<int:id>/', views.delete_item, name='delete_item'),
     path('category/<str:category>/', views.index, name='category-list'),
+    path('mens/', views.mens, name='mens'),
+    path('womens/', views.womens, name='womens'),
+    path('kids/', views.kids,name='kids'),
+   
 ]
 
 

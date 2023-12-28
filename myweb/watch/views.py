@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from watch.models import Item
 from watch.forms import ItemForm
 from users.models import CusOrders, CusRatingFeedback
+from django.views.generic import TemplateView
+
 
 # Create your views here.
 
@@ -91,4 +93,48 @@ def delete_item(request, id):
         return redirect('watch:index')
 
     return render(request, 'watch/item-delete.html', context)
+
+def mens(request):
+    itemlist = Item.objects.filter(category='m')
+
+    # for search functionality
+    item_name = request.GET.get('item_name')
+    if item_name != '' and item_name is not None:
+        itemlist = itemlist.filter(item_name__icontains=item_name)
+
+    context = {
+        'itemlist': itemlist
+    }
+
+    return render(request, 'watch/mens.html', context)
+
+def womens(request):
+    itemlist = Item.objects.filter(category='f')
+
+    # for search functionality
+    item_name = request.GET.get('item_name')
+    if item_name != '' and item_name is not None:
+        itemlist = itemlist.filter(item_name__icontains=item_name)
+
+    context = {
+        'itemlist': itemlist
+    }
+
+    return render(request, 'watch/womens.html', context)
+
+def kids(request):
+    itemlist = Item.objects.filter(category='k')
+
+    # for search functionality
+    item_name = request.GET.get('item_name')
+    if item_name != '' and item_name is not None:
+        itemlist = itemlist.filter(item_name__icontains=item_name)
+
+    context = {
+        'itemlist': itemlist
+    }
+
+    return render(request, 'watch/kids.html', context)
+
+
 

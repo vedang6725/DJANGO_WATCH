@@ -9,7 +9,6 @@ class Item(models.Model):
         ('f', 'Womens'),
         ('k', 'Kids'),
     )
-
     category = models.CharField(max_length=1, choices=CATEGORY_CHOICES, default="('m','Mens')")
     prod_code = models.IntegerField(default=100)
     for_user = models.CharField(
@@ -25,9 +24,7 @@ class Item(models.Model):
         default="https://www.windhorsepublications.com/wp-content/uploads/2019/11/image-coming-soon-placeholder.png"
     )
 
-    def __str__(self):
-        return self.item_name
-
+    
 
 
 
