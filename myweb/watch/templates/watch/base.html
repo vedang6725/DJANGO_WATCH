@@ -1,77 +1,108 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Your Website Title</title>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-</head>
-<body>
-   <nav class="navbar navbar-dark bg-dark">
-   
-    <a href="{% url 'watch:index' %}" class="nav-brand" style="font-style: italic; font-size: 1.3rem; text-align: justify; color: red">
-        <img src="https://blenderartists.org/uploads/default/original/3X/0/f/0f767a7fa5d57dc114ae2c75a073f37d0f3dbf7e.png" style="width: 100px;" alt="Logo">
-    </a>
+    <!-- Custom styles -->
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: justify;
+            color: red;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 10px;
+        }
+
+        .nav-item.nav-link.btn {
+            background-color: #EEF1F5; /* Set background color to the specified color */
+            color: #000000; /* Set text color to black */
+        }
     
+        .nav-item.nav-link.btn:hover {
+            background-color: #d0d7e2; /* Set a slightly darker color on hover if desired */
+        }
+    
+        .nav-item.nav-link.btn-danger {
+            background-color: #dc3545; /* Set background color for the danger button to a dark red */
+            color: #000000; /* Set text color to black */
+        }
+    
+        .nav-item.nav-link.btn-danger:hover {
+            background-color: #bd2130; /* Set a slightly darker color on hover for the danger button if desired */
+        }
        
+    </style>
+</head>
 
-    <div class="navbar">
-        {% if user.is_authenticated %}
+<body>
 
-        
+    <nav class="navbar navbar-dark" style="background:#EEF1F5 ;
+        background-attachment: fixed;
+        background-size: cover;
+        background-blend-mode: overlay;
+       "> 
 
-        <a href="{% url 'profile'%}" class="nav-item nav-link btn btn-dark">
-            Profile
+        <a href="{% url 'watch:index' %}" class="navbar-brand">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbFAjqKXN9VRF5Er_nNKPExsLycXJ0Kzhu3boNTcmY9AyWIykDXXyn4Our7kdXqTAQStM&usqp=CAU" style="width: 100px;" alt="Logo">
         </a>
-
-        <a href="{% url 'logout'%}" class="nav-item nav-link btn btn-dark">
-            Logout
-        </a>
-
+    
+        <div class="navbar-nav">
+            <a href="{% url 'watch:mens'%}" class="nav-item nav-link btn btn-outline-light">Mens</a> <!-- Light Outline Button -->
+            <a href="{% url 'watch:womens'%}" class="nav-item nav-link btn btn-outline-light">Womens</a> <!-- Light Outline Button -->
+            <a href="{% url 'watch:kids'%}" class="nav-item nav-link btn btn-outline-light">Kids</a> <!-- Light Outline Button -->
+        </div>
+    
+            <div class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile'%}" class="nav-item nav-link btn btn-outline-light">Profile</a> <!-- Light Outline Button -->
+                <a href="{% url 'logout'%}" class="nav-item nav-link btn btn-danger">Logout</a> <!-- Red Button -->
+            {% else %}
+                <a href="{% url 'login'%}" class="nav-item nav-link btn btn-outline-light">Login</a> <!-- Light Outline Button -->
+                <a href="{% url 'register'%}" class="nav-item nav-link btn btn-light">Sign Up</a> <!-- Light Button -->
+            {% endif %}
+            </div>
         
+    </nav>
+    
+    
+
+   
 
 
-        {% else %}
-            <a href="{% url 'login'%}" class="nav-item nav-link btn btn-dark">
-                Login
-            </a>
-
-            <a href="{% url 'register'%}" class="nav-item nav-link btn btn-dark">
-                Sign Up
-            </a>
-
-        {% endif %}
-    </div>
-</nav>
-{% if messages %}
-
+    {% if messages %}
         {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">
                 {{ message }}
             </div>
         {% endfor %}
+    {% endif %}
 
-{% endif %}
-
-<!-- for spacing -->
-<div class="mb-5">
-
-    
-</div>
-
-
-
+    <!-- for spacing -->
+    <div class="mb-5"></div>
 
     {% block body %}
+        <!-- Your specific content goes here -->
     {% endblock %}
 
-   
+    <!-- Bootstrap JS and Custom JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
-  
