@@ -126,9 +126,7 @@
         </div>
 
       
-        <!-- Product Cards -->
-        <!-- ... (your existing code above) ... -->
-
+       
 <!-- Product Cards -->
 <div class="row">
     {% for item in itemlist %}
@@ -147,7 +145,7 @@
                                 <span class="price" style="color: #F28D35; font-size: 1.2em;">₹{{ item.item_price }}</span>
                                 <!-- You may include an old price if needed -->
                             </div>
-                            <button class="buy-now" style="background: #F9D418; color: #000000; border: none; border-radius: 8px; font: bold; padding: 10px; transition: background 0.3s; margin-top: 10px; position: absolute; bottom: 10px; right: 10px;" onclick="buyNow('{{ item.sku }}', {{ item.id }}, event, 'simple', [], 'Slider Product Card')">BUY NOW</button>
+                            <button class="buy-now" style="background: #F9D418; color: #000000; border: none; border-radius: 8px; font-style: bold; padding: 10px; transition: background 0.3s; margin-top: 10px; position: absolute; bottom: 10px; right: 10px;" onclick="buyNow('{{ item.sku }}', {{ item.id }}, event, 'simple', [], 'Slider Product Card')">BUY NOW</button>
                         </div>
                     </div>
                 </div>

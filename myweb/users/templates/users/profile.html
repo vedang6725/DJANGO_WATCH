@@ -1,40 +1,100 @@
 {% extends 'watch/base.html' %}
 
 {% block body %}
-<br><br><br>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container">
-    <div class="row">
-         <div class="col-md-4 offset-md-4">
-            <div class="card">
-                <div class="card-header text-white bg-info">
-                    <div class="card-title">
-                        Profile
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #1C3552;
+            margin-bottom: 20px;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .card {
+            border: 2px solid #ffffff;
+            border-radius: 10px 0 10px 0;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #000000;
+            transition: transform 0.3s;
+            height: 100%;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            border-radius: 10px 0 0 0;
+        }
+
+        .card-title {
+            color: #ffffff;
+        }
+
+        .card-body {
+            padding-top: 20px;
+        }
+
+        .profile-image {
+            margin-bottom: 15px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details span {
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card">
+                    <div class="card-header text-white bg-info">
+                        <div class="card-title">
+                            Profile
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="profile-image">
+                                <img height="100px" width="100px" src="{{ user.profile.image.url }}" alt="Profile Image">
+                            </div>
+                            <div class="profile-details offset-md-1">
+                                <span>{{ user.first_name }} {{ user.last_name }}</span><br>
+                                <span>{{ user.email }}</span>
+                                <p>{{ user.profile.location }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        
-                        <div>
-                            <img style="margin-bottom: 15px;" height="100px" width="100px" src="{{ user.profile.image.url }}">
-                        </div>
-
-                        <div style="margin-top: 20px"class="offset-md-1">
-                            <span>{{ user.first_name }}</span>
-                            <span>{{ user.last_name }}</span><br>
-                            <span>{{ user.email }}</span>
-                            <p>{{ user.profile.location}}</p>
-                        </div>
-
-                    </div>
-                    
-                </div>
-            </div>    
+            </div>
         </div>
     </div>
-</div>
 
+    <!-- Bootstrap JS and Custom JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 
-
-
+</html>
 {% endblock %}

@@ -11,118 +11,171 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom styles -->
-    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #1C3552;
+            margin-bottom: 20px;
+            color: #ffffff;
+            padding: 20px; /* Add padding for better spacing */
+        }
+
+        .carousel-inner img {
+            height: 500px;
+            object-fit: cover;
+            margin-bottom: 20px; /* Add margin to create space between carousel and cards */
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .category-btn {
+            background: linear-gradient(to right, #333333, #111111);
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .category-btn:hover {
+            background: linear-gradient(to right, #2a2a2a, #000000);
+        }
+
+        .card {
+            border: 2px solid #ffffff;
+            border-radius: 10px 0 10px 0;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #000000; /* Black background color */
+            transition: transform 0.3s;
+            height: 100%;
+            margin-bottom: 20px;
+            position: relative; /* Make the container relative for absolute positioning */
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-title,
+        .product-description,
+        .product-price {
+            color: #ffffff; /* White text color */
+            margin-bottom: 10px;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .details-btn {
+            width: 100px;
+            background: linear-gradient(to right, #4a90e2, #336699);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            transition: background 0.3s;
+            margin-top: 10px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .details-btn:hover {
+            background: linear-gradient(to right, #336699, #1c4f8e);
+        }
+    </style>
 </head>
 
 <body>
     <div class="container-fluid">
-        <!-- Women's Product Cards -->
+        
+
+        <!-- Product Cards -->
         <div class="row">
             {% for item in itemlist %}
-            <div class="col-md-4 mb-3" data-category="{{ item.category }}">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <style>
-                                body {
-                                    font-family: 'Montserrat', sans-serif;
-                                    background: linear-gradient(to right, #222222, #444444);
-                                    margin-bottom: 20px;
-                                    color: #ffffff;
-                                    padding: 20px; /* Add padding for better spacing */
-                                }
-                        
-                                .carousel-inner img {
-                                    height: 500px;
-                                    object-fit: cover;
-                                    margin-bottom: 20px; /* Add margin to create space between carousel and cards */
-                                }
-                        
-                                .category-filter {
-                                    display: flex;
-                                    justify-content: space-around;
-                                    margin-bottom: 20px;
-                                }
-                        
-                                .category-btn {
-                                    background: linear-gradient(to right, #333333, #111111);
-                                    color: #ffffff;
-                                    border: 2px solid #ffffff;
-                                    padding: 12px 20px;
-                                    border-radius: 8px;
-                                    cursor: pointer;
-                                    transition: background 0.3s;
-                                }
-                        
-                                .category-btn:hover {
-                                    background: linear-gradient(to right, #2a2a2a, #000000);
-                                }
-                        
-                                .card {
-                                    border: 2px solid #ffffff;
-                                    border-radius: 8px;
-                                    padding: 20px;
-                                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                                    background: linear-gradient(to right, #333333, #111111);
-                                    transition: transform 0.3s;
-                                    height: 100%;
-                                    margin-bottom: 20px;
-                                }
-                            
-                        
-                                .card:hover {
-                                    transform: scale(1.05);
-                                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-                                }
-                        
-                                .product-image {
-                                    max-width: 100%;
-                                    height: auto;
-                                    border-radius: 8px;
-                                }
-                        
-                                .product-title,
-                                .product-description,
-                                .product-price,
-                                .added-info {
-                                    color: #ffffff;
-                                    margin-bottom: 10px;
-                                }
-                        
-                        
-                                .details-btn {
-                                    width: 100px;
-                                    background: linear-gradient(to right, #4a90e2, #336699);
-                                    color: #ffffff;
-                                    border: none;
-                                    border-radius: 8px;
-                                    padding: 10px;
-                                    transition: background 0.3s;
-                                    margin-top: 10px;
-                                }
-                        
-                                
-                        
-                                .details-btn:hover {
-                                    background: linear-gradient(to right, #336699, #1c4f8e);
-                                }
-                            </style>               <img src="{{ item.item_image }}" class="product-image" alt="{{ item.item_name }}">
-                        </div>
-                        <div class="col-md-8">
-                            <h3 class="product-title">{{ item.item_name }}</h3>
-                            <h5 class="product-description">{{ item.item_desc | truncatewords:6 }}</h5>
-                            <h6 class="product-price">₹{{ item.item_price }}</h6>
-                            <p class="added-info">Added for: {{ item.for_user }}</p>
-                            <p class="added-info">Added by superuser: {{ item.user }}</p>
-                            <a href="{% url 'watch:detail' item.id %}" class="btn details-btn">Details</a>
+            <div class="col-md-3 mb-3" data-category="{{ item.category }}">
+                <a href="{% url 'watch:detail' item.id %}">
+                    <div class="card">
+                        <div class="tile">
+                            <div class="tile-badge" style="background-color: #FF5252; color: #ffffff; width:55px; text-align:center;position: absolute; top: 0; left: 0; border-radius: 8px 0 0 0">
+                                <span class="badge-content">80%off</span>
+                            </div>
+                            <img class="tile-img" loading="lazy" src="{{ item.item_image }}" alt="{{ item.item_name }}" style="width: 100%;">
+                            <div class="tile-content">
+                                <span class="tile-product-name" style="color: #ffffff; font-weight: bold;">{{ item.item_name }}</span>
+                                <div class="d-flex justify-space-between flex-wrap" style="align-items: end; ">
+                                    <div class="d-flex flex-column mt-3" style="flex: 1;">
+                                        <span class="price" style="color: #F28D35; font-size: 1.2em;">₹{{ item.item_price }}</span>
+                                        <!-- You may include an old price if needed -->
+                                    </div>
+                                    <button class="buy-now" style="background: #F9D418; color: #000000; border: none; border-radius: 8px; font: bold; padding: 10px; transition: background 0.3s; margin-top: 10px; position: absolute; bottom: 10px; right: 10px;" onclick="buyNow('{{ item.sku }}', {{ item.id }}, event, 'simple', [], 'Slider Product Card')">BUY NOW</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>
-    
+        
+        <!-- Stylish Footer -->
+<footer class="footer mt-5" style="background-color: #EEF1F5; color: #000000; padding: 30px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>About Us</h5>
+                <p>NEXUS is your go-to destination for high-quality and stylish timepieces. Discover the perfect watch for any occasion.</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Connect With Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Contact Us</h5>
+                <address>
+                    <p>Email: <a href="mailto:info@justwatches.com" style="color: #fff;">info@justwatches.com</a></p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </address>
+            </div>
+        </div>
+        <hr style="border-color: #2E5570;">
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <p>&copy; 2024 NEXUS. All rights reserved.</p>
+            </div>
+        </div>
     </div>
+</footer>
+
+<!-- Add Font Awesome for social icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+
 
     <!-- Bootstrap JS and Custom JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

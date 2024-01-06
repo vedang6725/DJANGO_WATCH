@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+
     <!-- Custom styles -->
     <style>
         body {
@@ -51,7 +54,7 @@
 
 <body>
 
-    <nav class="navbar navbar-dark" style="background:#EEF1F5 ;
+    <nav class="navbar navbar-dark ms-auto" style="background:#EEF1F5;
         background-attachment: fixed;
         background-size: cover;
         background-blend-mode: overlay;
@@ -61,23 +64,24 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbFAjqKXN9VRF5Er_nNKPExsLycXJ0Kzhu3boNTcmY9AyWIykDXXyn4Our7kdXqTAQStM&usqp=CAU" style="width: 100px;" alt="Logo">
         </a>
     
-        <div class="navbar-nav">
-            <a href="{% url 'watch:mens'%}" class="nav-item nav-link btn btn-outline-light">Mens</a> <!-- Light Outline Button -->
-            <a href="{% url 'watch:womens'%}" class="nav-item nav-link btn btn-outline-light">Womens</a> <!-- Light Outline Button -->
-            <a href="{% url 'watch:kids'%}" class="nav-item nav-link btn btn-outline-light">Kids</a> <!-- Light Outline Button -->
-        </div>
-    
-            <div class="navbar-nav ml-auto">
-            {% if user.is_authenticated %}
-                <a href="{% url 'profile'%}" class="nav-item nav-link btn btn-outline-light">Profile</a> <!-- Light Outline Button -->
-                <a href="{% url 'logout'%}" class="nav-item nav-link btn btn-danger">Logout</a> <!-- Red Button -->
-            {% else %}
-                <a href="{% url 'login'%}" class="nav-item nav-link btn btn-outline-light">Login</a> <!-- Light Outline Button -->
-                <a href="{% url 'register'%}" class="nav-item nav-link btn btn-light">Sign Up</a> <!-- Light Button -->
-            {% endif %}
-            </div>
         
-    </nav>
+            <a href="{% url 'watch:mens'%}" class="nav-item nav-link btn btn-outline-light">MENS</a> <!-- Light Outline Button -->
+            <a href="{% url 'watch:womens'%}" class="nav-item nav-link btn btn-outline-light">WOMENS</a> <!-- Light Outline Button -->
+            <a href="{% url 'watch:kids'%}" class="nav-item nav-link btn btn-outline-light">UNISEX</a> <!-- Light Outline Button -->
+    
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile'%}" class="nav-item nav-link btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                  </svg></a> <!-- Light Outline Button -->
+                <a href="{% url 'logout'%}" class="nav-item nav-link btn btn-danger"><i class="fas fa-sign-out-alt"></i></a> <!-- Red Button -->
+            {% else %}
+                <a href="{% url 'login'%}" class="nav-item nav-link btn btn-outline-light"><i class="fas fa-sign-in-alt"></i></a> <!-- Light Outline Button -->
+                <a href="{% url 'register'%}" class="nav-item nav-link btn btn-light"><i class="fas fa-user-plus"></i></a> <!-- Light Button -->
+            {% endif %}
+        
+    </nav> 
+
     
     
 
