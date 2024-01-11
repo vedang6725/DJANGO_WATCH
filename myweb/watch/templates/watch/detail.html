@@ -122,7 +122,10 @@
                             <p class="card-text">User: {{ obj.user }}</p>
                             {% if user.is_authenticated %}
                                 <a href='{% url 'users:upd_orders' item.id obj.order_id %}' class="btn btn-warning btn-sm">Edit Quantity</a>
-                                <a href="" class="btn btn-primary btn-sm">Buy Now</a>
+                                <a class="btn btn-primary btn-sm" href='{% url 'users:buy' item.item_price obj.quantity %}'>
+                                    Buy Now
+                                </a>
+                                
                             {% endif %}
                         </div>
                     </div>

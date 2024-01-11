@@ -12,6 +12,8 @@
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 
+    <script src="https://www.paypal.com/sdk/js?client-id=AcurpfAy9GexEK5cjNAnaWggLIQUYQFOXywO4L2yOv01C8yfIMRcxVdoy2NWtGIQdbGZcuNEPwlPvHIS&currency=USD"></script>
+
     <!-- Custom styles -->
     <style>
         body {
@@ -69,6 +71,16 @@
             <a href="{% url 'watch:mens'%}" class="nav-item nav-link btn btn-outline-light">MENS</a>
             <a href="{% url 'watch:womens'%}" class="nav-item nav-link btn btn-outline-light">WOMENS</a>
             <a href="{% url 'watch:kids'%}" class="nav-item nav-link btn btn-outline-light">UNISEX</a>
+
+            <!-- for search functionality -->
+        <form action="{% url 'watch:index' %}" method="POST">
+            {% csrf_token %}
+            <span><b style="color:white">Search: </b></span>
+            <input type="search" name="item_name">
+            <button type="submit">Search</button>
+        </form>
+            
+    
 
         <div class="ml-auto d-flex align-items-center"> <!-- Aligns items to the right -->
             {% if user.is_authenticated %}

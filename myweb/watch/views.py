@@ -6,12 +6,20 @@ from users.models import CusOrders, CusRatingFeedback
 from django.views.generic import TemplateView
 
 
+
 # Create your views here.
 
 
 def index(request, category=None):
+    
     if category:
         itemlist = Item.objects.filter(category=category)
+        
+         # for search functionality
+    item_name = request.POST.get('item_name')
+    if item_name != '' and item_name is not None:
+       itemlist = Item.objects.filter(item_name__icontains=item_name)
+       
     else:
         itemlist = Item.objects.all()
 
@@ -135,6 +143,5 @@ def kids(request):
     }
 
     return render(request, 'watch/kids.html', context)
-
 
 

@@ -3,6 +3,7 @@ from watch import views
 
 
 
+
 app_name = 'watch'
 
 urlpatterns = [
@@ -14,6 +15,8 @@ urlpatterns = [
     path('mens/', views.mens, name='mens'),
     path('womens/', views.womens, name='womens'),
     path('kids/', views.kids,name='kids'),
+    
+    
    
 ]
 
