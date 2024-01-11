@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from users.models import CusOrders, CusRatingFeedback
 from users.forms import CusOrdersUpd, CusRatFeedForm
 from django.http import JsonResponse
+from django.core.mail import send_mail
+from .models import CusOrders
+from watch.models import Item  # Import the Item model
 import json
 
 # Create your views here.
@@ -81,19 +84,35 @@ def profilepage(request):
 def Orders(request, id, pdcd, user):
 
     context = {
-        'pdcd':pdcd,
-        'user':user
+        'pdcd': pdcd,
+        'user': user
     }
 
     if request.method == 'POST':
+        # Get the item details using the pdcd
+        item = Item.objects.get(prod_code=pdcd)
 
+        # Create a new order instance
         Obj_CusOrds = CusOrders(
             prod_code=pdcd,
             user=user,
             quantity=request.POST.get('qty')
         )
-
+        
+        # Save the order in the database
         Obj_CusOrds.save()
+
+        # Compose the email message
+        send_mail(
+            "Your order has been successfully placed",
+            f"Thank you, {user}!\n\nYour order has been successfully placed.\n"
+            f"Item: {item.item_name}\n"
+            f"Order ID: {Obj_CusOrds.order_id}\n"
+            f"Quantity: {request.POST.get('qty')}\n",
+            "vedangrane430@gmail.com",
+            ["vedangrane430@gmail.com"],
+            fail_silently=False,
+        )
 
         return redirect('watch:detail', item_id=id)
 
