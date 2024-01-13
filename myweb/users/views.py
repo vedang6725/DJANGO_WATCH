@@ -89,6 +89,9 @@ def Orders(request, id, pdcd, user):
     }
 
     if request.method == 'POST':
+        
+        
+        
         # Get the item details using the pdcd
         item = Item.objects.get(prod_code=pdcd)
 

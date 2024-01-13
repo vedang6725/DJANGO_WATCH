@@ -1,37 +1,54 @@
- {% extends 'watch/base.html' %}
-
-{% block body %}
-
-<br><br><br>
+{% extends 'watch/base.html' %} {% block body %}
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <div class="card">
-                <div class="card-header text-white bg-info">
-                    <div class="card-title">
-                        Login
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form method="POST">
-                        {% csrf_token %}
-
-                        <label class="offset-md-1" for="user">Username:</label><br>
-                        <input class="offset-md-1" type="text" id="user" name="username"><br>
-
-                        <label class="offset-md-1" for="pass">Password:</label><br>
-                        <input class="offset-md-1" type="password" id="pass" name="password">
-
-                        <button class="btn btn-success btn-sm" type="submit">Login</button>
-                    </form>
-                </div>
-            </div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>LOGIN</h4>
         </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3" style="font-weight: bold; color: black">
+              <label for="user" class="form-label">Username:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="user"
+                name="username"
+                required
+              />
+            </div>
+
+            <div class="mb-3" style="font-weight: bold; color: black">
+              <label for="pass" class="form-label">Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="pass"
+                name="password"
+                required
+              />
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">LOGIN</button>
+            </div>
+          </form>
+        </div>
+        <div
+          class="card-footer text-center"
+          style="font-weight: bold; color: black"
+        >
+          <p class="mb-0">
+            Don't have an account? <a href="{% url 'register' %}">SIGN UP</a>
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-{% endblock %} 
-
-
-
+{% endblock %}

@@ -2,50 +2,74 @@
 
 {% block body %}
 
-<br><br><br>
-
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header text-white bg-info">
-                    <div class="card-title">
-                        Register
-                    </div>
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>REGISTER</h4>
                 </div>
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
 
-                        <label class="offset-md-1">Username: </label><br>
-                        <span class="offset-md-1">{{ form.username }}</span>
+                        <div class="mb-3 row">
+                            <label for="username" class="col-sm-3 col-form-label text-end" style="font-weight: bold; color: black">Username:</label>
+                            <div class="col-sm-9">
+                                <span>{{ form.username }}</span>
+                                
+                            </div>
+                        </div>
 
-                        <br><label class="offset-md-1">Email: </label><br>
-                        <span class="offset-md-1">{{ form.email }}</span>
+                        <div class="mb-3 row">
+                            <label for="email" class="col-sm-3 col-form-label text-end" style="font-weight: bold; color: black">Email:</label>
+                            <div class="col-sm-9">
+                                <span>{{ form.email }}</span>
+                            </div>
+                        </div>
 
-                        <br><label class="offset-md-1">First Name: </label><br>
-                        <span class="offset-md-1">{{ form.first_name }}</span>
+                        <div class="mb-3 row">
+                            <label for="first_name" class="col-sm-3 col-form-label text-end" style="font-weight: bold; color: black">First Name:</label>
+                            <div class="col-sm-9">
+                                <span>{{ form.first_name }}</span>
+                            </div>
+                        </div>
 
-                        <br><label class="offset-md-1">Last Name: </label><br>
-                        <span class="offset-md-1">{{ form.last_name }}</span>
+                        <div class="mb-3 row">
+                            <label for="last_name" class="col-sm-3 col-form-label text-end" style="font-weight: bold; color: black">Last Name:</label>
+                            <div class="col-sm-9">
+                                <span>{{ form.last_name }}</span>
+                            </div>
+                        </div>
 
-                        <br><label class="offset-md-1">Password: </label><br>
-                        <span class="offset-md-1">{{ form.password1 }}</span>
+                        <div class="mb-3 row">
+                            <label for="password1" class="col-sm-3 col-form-label text-end" style="font-weight: bold; color: black">Password:</label>
+                            <div class="col-sm-9">
+                                <span>{{ form.password1 }}</span>
+                            </div>
+                        </div>
 
-                        <br><label class="offset-md-1">Confirm Password: </label><br>
-                        <span class="offset-md-1">{{ form.password2 }}</span>
+                        <div class="mb-3 row">
+                            <label for="password2" class="col-sm-3 col-form-label text-end" style="font-weight: bold; color: black">Confirm Password:</label>
+                            <div class="col-sm-9">
+                                <span>{{ form.password2 }}</span>
+                            </div>
+                        </div>
 
-                        <button class="btn btn-success btn-sm" type="submit">Sign Up</button>
+                        <div class="text-center">
+                            <button class="btn btn-success btn-sm" type="submit">Sign Up</button>
+                        </div>
                     </form>
+                </div>
+
+                <div class="card-footer text-center" style="font-weight: bold; color: black">
+                    <p class="mb-0">
+                        Already have an account? <a href="{% url 'login' %}">LOGIN</a>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<br><br><br>
-
-
-{% endblock %} 
-
+{% endblock %}
